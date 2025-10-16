@@ -1,0 +1,157 @@
+{
+  "components": {
+    "comp-data-transformation-component": {
+      "executorLabel": "exec-data-transformation-component",
+      "inputDefinitions": {
+        "parameters": {
+          "assistant_column": {
+            "defaultValue": "translation",
+            "isOptional": true,
+            "parameterType": "STRING"
+          },
+          "assistant_fallback_column": {
+            "defaultValue": "translation_extra",
+            "isOptional": true,
+            "parameterType": "STRING"
+          },
+          "emit_both_variants": {
+            "defaultValue": false,
+            "isOptional": true,
+            "parameterType": "BOOLEAN"
+          },
+          "input_gcs_csv_uri": {
+            "parameterType": "STRING"
+          },
+          "prefer_extra": {
+            "defaultValue": true,
+            "isOptional": true,
+            "parameterType": "BOOLEAN"
+          },
+          "random_seed": {
+            "defaultValue": 42.0,
+            "isOptional": true,
+            "parameterType": "NUMBER_INTEGER"
+          },
+          "test_size": {
+            "defaultValue": 0.2,
+            "isOptional": true,
+            "parameterType": "NUMBER_DOUBLE"
+          },
+          "user_column": {
+            "parameterType": "STRING"
+          }
+        }
+      },
+      "outputDefinitions": {
+        "parameters": {
+          "test_output_path": {
+            "parameterType": "STRING"
+          },
+          "train_output_path": {
+            "parameterType": "STRING"
+          }
+        }
+      }
+    }
+  },
+  "deploymentSpec": {
+    "executors": {
+      "exec-data-transformation-component": {
+        "container": {
+          "args": [
+            "--executor_input",
+            "{{$}}",
+            "--function_to_execute",
+            "data_transformation_component"
+          ],
+          "command": [
+            "sh",
+            "-c",
+            "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip || python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1 python3 -m pip install --quiet --no-warn-script-location 'pandas==2.2.2' 'datasets==3.0.1' 'gcsfs==2024.6.1' 'pyarrow==17.0.0'  &&  python3 -m pip install --quiet --no-warn-script-location 'kfp==2.14.6' '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"$0\" \"$@\"\n",
+            "sh",
+            "-ec",
+            "program_path=$(mktemp -d)\n\nprintf \"%s\" \"$0\" > \"$program_path/ephemeral_component.py\"\n_KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         \"$program_path/ephemeral_component.py\"                         \"$@\"\n",
+            "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import *\n\ndef data_transformation_component(\n    input_gcs_csv_uri: str,\n    user_column: str,\n    assistant_column: str = \"translation\",\n    assistant_fallback_column: str = \"translation_extra\",\n    prefer_extra: bool = True,\n    emit_both_variants: bool = False,\n    test_size: float = 0.2,\n    random_seed: int = 42,\n    train_output_path: OutputPath(str) = \"\",\n    test_output_path: OutputPath(str) = \"\",\n) -> None:\n    import logging\n    import json\n    import pandas as pd\n    from datasets import Dataset\n\n    def _to_conversation_rows(\n        df: \"pd.DataFrame\",\n        user_col: str,\n        assistant_col: str,\n        assistant_fallback_col: str | None = None,\n        prefer_extra: bool = True,\n        emit_both_variants: bool = False,\n    ) -> List[List[dict]]:\n        conversation_rows: List[List[dict]] = []\n        for _, row in df.iterrows():\n            user_text = str(row[user_col])\n            primary_available = assistant_col in df.columns and pd.notna(row[assistant_col])\n            extra_available = (\n                assistant_fallback_col is not None\n                and assistant_fallback_col in df.columns\n                and pd.notna(row[assistant_fallback_col])\n            )\n\n            if prefer_extra and extra_available:\n                assistant_text = str(row[assistant_fallback_col])\n            elif primary_available:\n                assistant_text = str(row[assistant_col])\n            elif extra_available:\n                assistant_text = str(row[assistant_fallback_col])\n            else:\n                assistant_text = \"\"\n\n            conversation_rows.append([\n                {\"role\": \"user\", \"content\": user_text},\n                {\"role\": \"assistant\", \"content\": assistant_text},\n            ])\n\n            if emit_both_variants and primary_available and extra_available:\n                other_text = str(row[assistant_col]) if prefer_extra else str(row[assistant_fallback_col])\n                conversation_rows.append([\n                    {\"role\": \"user\", \"content\": user_text},\n                    {\"role\": \"assistant\", \"content\": other_text},\n                ])\n        return conversation_rows\n\n    logging.basicConfig(level=logging.INFO)\n    logger = logging.getLogger(\"data_transformation_component\")\n\n    logger.info(\"Reading CSV from %s\", input_gcs_csv_uri)\n    df = pd.read_csv(input_gcs_csv_uri)\n    expected_cols = {user_column}\n    if assistant_column:\n        expected_cols.add(assistant_column)\n    if assistant_fallback_column:\n        expected_cols.add(assistant_fallback_column)\n    missing = [c for c in expected_cols if c not in df.columns]\n    if missing:\n        raise ValueError(f\"Missing expected columns in input: {missing}\")\n\n    logger.info(\"Converting to HF Dataset and applying chat template\")\n    conversations = _to_conversation_rows(\n        df=df,\n        user_col=user_column,\n        assistant_col=assistant_column,\n        assistant_fallback_col=assistant_fallback_column,\n        prefer_extra=prefer_extra,\n        emit_both_variants=emit_both_variants,\n    )\n    ds = Dataset.from_dict({\"messages\": [json.dumps(conv) for conv in conversations]})\n\n    logger.info(\"Splitting dataset: test_size=%.2f seed=%d\", test_size, random_seed)\n    split = ds.train_test_split(test_size=test_size, seed=random_seed)\n    train_ds = split[\"train\"]\n    test_ds = split[\"test\"]\n\n    logger.info(\"Writing train dataset to %s\", train_output_path)\n    train_df = pd.DataFrame({\"messages\": train_ds[\"messages\"]})\n    train_df.to_csv(train_output_path, index=False)\n\n    logger.info(\"Writing test dataset to %s\", test_output_path)\n    test_df = pd.DataFrame({\"messages\": test_ds[\"messages\"]})\n    test_df.to_csv(test_output_path, index=False)\n\n"
+          ],
+          "image": "python:3.11"
+        }
+      }
+    }
+  },
+  "pipelineInfo": {
+    "name": "yoda-data-processing-pipeline"
+  },
+  "root": {
+    "dag": {
+      "tasks": {
+        "data-transformation-component": {
+          "cachingOptions": {
+            "enableCache": true
+          },
+          "componentRef": {
+            "name": "comp-data-transformation-component"
+          },
+          "inputs": {
+            "parameters": {
+              "assistant_column": {
+                "componentInputParameter": "assistant_column"
+              },
+              "assistant_fallback_column": {
+                "componentInputParameter": "assistant_fallback_column"
+              },
+              "emit_both_variants": {
+                "componentInputParameter": "emit_both_variants"
+              },
+              "input_gcs_csv_uri": {
+                "componentInputParameter": "input_gcs_csv_uri"
+              },
+              "prefer_extra": {
+                "componentInputParameter": "prefer_extra"
+              },
+              "user_column": {
+                "componentInputParameter": "user_column"
+              }
+            }
+          },
+          "taskInfo": {
+            "name": "data-transformation-component"
+          }
+        }
+      }
+    },
+    "inputDefinitions": {
+      "parameters": {
+        "assistant_column": {
+          "defaultValue": "translation",
+          "isOptional": true,
+          "parameterType": "STRING"
+        },
+        "assistant_fallback_column": {
+          "defaultValue": "translation_extra",
+          "isOptional": true,
+          "parameterType": "STRING"
+        },
+        "emit_both_variants": {
+          "defaultValue": false,
+          "isOptional": true,
+          "parameterType": "BOOLEAN"
+        },
+        "input_gcs_csv_uri": {
+          "parameterType": "STRING"
+        },
+        "prefer_extra": {
+          "defaultValue": true,
+          "isOptional": true,
+          "parameterType": "BOOLEAN"
+        },
+        "user_column": {
+          "defaultValue": "sentence",
+          "isOptional": true,
+          "parameterType": "STRING"
+        }
+      }
+    }
+  },
+  "schemaVersion": "2.1.0",
+  "sdkVersion": "kfp-2.14.6"
+}

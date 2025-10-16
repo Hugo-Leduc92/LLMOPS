@@ -8,4 +8,10 @@ dependencies = [
     "google-cloud-aiplatform>=1.120.0",
     "google-cloud-bigquery>=3.38.0",
     "google-cloud-storage>=2.19.0",
+    "kfp>=2.7.0",
+    "pandas>=2.2.2",
+    "datasets>=3.0.1",
+    "gcsfs>=2024.6.1",
+    "pyarrow>=17.0.0",
+    "python-dotenv>=1.0.1",
 ]
