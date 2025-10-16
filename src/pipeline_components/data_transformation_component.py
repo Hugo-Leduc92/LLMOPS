@@ -10,33 +10,35 @@ from kfp.dsl import OutputPath, component
     ],
 )
 def data_transformation_component(
-    input_gcs_csv_uri: str,
-    user_column: str = "sentence",
-    assistant_column: str = "translation",
-    assistant_fallback_column: str = "translation_extra",
-    prefer_extra: bool = True,
-    emit_both_variants: bool = False,
-    test_size: float = 0.2,
-    random_seed: int = 42,
-    train_output_path: OutputPath(str) = "",
-    test_output_path: OutputPath(str) = "",
+    raw_dataset_uri: str,
+    train_test_split_ratio: float,
+    train_dataset: OutputPath("Dataset"),  # type: ignore
+    test_dataset: OutputPath("Dataset"),  # type: ignore
 ) -> None:
     """Format and split Yoda Sentences for Phi-3 fine-tuning.
 
-    - Chooses assistant text from `translation_extra` when `prefer_extra=True`, otherwise `translation`.
-    - Optionally emits both variants per row when `emit_both_variants=True`.
+    Structure mirrors Correction's component interface while preserving existing
+    transformation logic (column choices and variant handling with defaults).
     """
     import logging
     import json
     import pandas as pd
     from datasets import Dataset
 
+    # Defaults preserved from previous implementation
+    user_column = "sentence"
+    assistant_column = "translation"
+    assistant_fallback_column = "translation_extra"
+    prefer_extra = True
+    emit_both_variants = False
+    random_seed = 42
+
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
     logger.info("Starting data transformation process...")
 
-    logger.info(f"Reading from {input_gcs_csv_uri}")
-    df = pd.read_csv(input_gcs_csv_uri)
+    logger.info(f"Reading from {raw_dataset_uri}")
+    df = pd.read_csv(raw_dataset_uri)
 
     # Validate columns
     expected = {user_column}
@@ -77,16 +79,15 @@ def data_transformation_component(
             ])
 
     ds = Dataset.from_dict({"messages": [json.dumps(conv) for conv in conversations]})
-    logger.info("Splitting dataset: test_size=%.2f seed=%d", test_size, random_seed)
-    split = ds.train_test_split(test_size=test_size, seed=random_seed)
+    logger.info("Splitting dataset: test_size=%.2f seed=%d", train_test_split_ratio, random_seed)
+    split = ds.train_test_split(test_size=train_test_split_ratio, seed=random_seed)
 
-    # Write outputs
-    train_df = pd.DataFrame({"messages": split["train"]["messages"]})
-    test_df = pd.DataFrame({"messages": split["test"]["messages"]})
-    logger.info(f"Writing train dataset to {train_output_path}...")
-    train_df.to_csv(train_output_path, index=False)
-    logger.info(f"Writing test dataset to {test_output_path}...")
-    test_df.to_csv(test_output_path, index=False)
+    logger.info(f"Writing train dataset to {train_dataset}...")
+    split["train"].to_csv(train_dataset, index=False)
+
+    logger.info(f"Writing test dataset to {test_dataset}...")
+    split["test"].to_csv(test_dataset, index=False)
+
     logger.info("Data transformation process completed successfully")
 
 

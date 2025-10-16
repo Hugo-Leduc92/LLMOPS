@@ -21,7 +21,7 @@ def compile_pipeline(pipeline_spec_path: str) -> None:
     )
 
 
-def submit_pipeline(pipeline_spec_path: str, input_gcs_csv_uri: str) -> None:
+def submit_pipeline(pipeline_spec_path: str, raw_dataset_uri: str) -> None:
     gcp = get_gcp_config()
     aiplatform.init(project=gcp.project_id, location=gcp.region)
 
@@ -30,7 +30,7 @@ def submit_pipeline(pipeline_spec_path: str, input_gcs_csv_uri: str) -> None:
         template_path=pipeline_spec_path,
         pipeline_root=f"gs://{gcp.bucket_name}/vertex-pipelines",
         parameter_values={
-            "input_gcs_csv_uri": input_gcs_csv_uri,
+            "raw_dataset_uri": raw_dataset_uri,
         },
     )
     job.run(sync=True)
@@ -45,7 +45,7 @@ def main() -> None:
     os.makedirs(os.path.dirname(pipeline_spec_path), exist_ok=True)
 
     compile_pipeline(pipeline_spec_path)
-    submit_pipeline(pipeline_spec_path, input_gcs_csv_uri=sys.argv[1])
+    submit_pipeline(pipeline_spec_path, raw_dataset_uri=sys.argv[1])
 
 
 if __name__ == "__main__":
