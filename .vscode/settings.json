@@ -1,0 +1,7 @@
+{
+    "python.defaultInterpreterPath": "/Users/samuel/Projects/Albert School/Courses/M2 - LLMOps/Project/LLMOPS/.venv/bin/python",
+    "jupyter.defaultKernel": "python3",
+    "python.terminal.activateEnvironment": true,
+    "python.experiments.enabled": true,
+    "python.experiments.optInto": ["pythonTerminalEnvVarActivation"],
+}

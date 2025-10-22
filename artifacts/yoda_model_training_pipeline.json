@@ -1,0 +1,184 @@
+{
+  "components": {
+    "comp-data-transformation-component": {
+      "executorLabel": "exec-data-transformation-component",
+      "inputDefinitions": {
+        "parameters": {
+          "raw_dataset_uri": {
+            "parameterType": "STRING"
+          },
+          "train_test_split_ratio": {
+            "parameterType": "NUMBER_DOUBLE"
+          }
+        }
+      },
+      "outputDefinitions": {
+        "artifacts": {
+          "test_dataset": {
+            "artifactType": {
+              "schemaTitle": "system.Dataset",
+              "schemaVersion": "0.0.1"
+            }
+          },
+          "train_dataset": {
+            "artifactType": {
+              "schemaTitle": "system.Dataset",
+              "schemaVersion": "0.0.1"
+            }
+          }
+        }
+      }
+    },
+    "comp-fine-tuning-component": {
+      "executorLabel": "exec-fine-tuning-component",
+      "inputDefinitions": {
+        "artifacts": {
+          "train_dataset": {
+            "artifactType": {
+              "schemaTitle": "system.Dataset",
+              "schemaVersion": "0.0.1"
+            },
+            "description": "Training dataset from data transformation step"
+          }
+        }
+      },
+      "outputDefinitions": {
+        "artifacts": {
+          "metrics": {
+            "artifactType": {
+              "schemaTitle": "system.Metrics",
+              "schemaVersion": "0.0.1"
+            }
+          },
+          "model": {
+            "artifactType": {
+              "schemaTitle": "system.Model",
+              "schemaVersion": "0.0.1"
+            }
+          }
+        }
+      }
+    }
+  },
+  "deploymentSpec": {
+    "executors": {
+      "exec-data-transformation-component": {
+        "container": {
+          "args": [
+            "--executor_input",
+            "{{$}}",
+            "--function_to_execute",
+            "data_transformation_component"
+          ],
+          "command": [
+            "sh",
+            "-c",
+            "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip || python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1 python3 -m pip install --quiet --no-warn-script-location 'pandas>=2.3.2' 'datasets==4.0.0' 'gcsfs'  &&  python3 -m pip install --quiet --no-warn-script-location 'kfp==2.14.6' '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"$0\" \"$@\"\n",
+            "sh",
+            "-ec",
+            "program_path=$(mktemp -d)\n\nprintf \"%s\" \"$0\" > \"$program_path/ephemeral_component.py\"\n_KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         \"$program_path/ephemeral_component.py\"                         \"$@\"\n",
+            "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import *\n\ndef data_transformation_component(\n    raw_dataset_uri: str,\n    train_test_split_ratio: float,\n    train_dataset: OutputPath(\"Dataset\"),  # type: ignore\n    test_dataset: OutputPath(\"Dataset\"),  # type: ignore\n) -> None:\n    \"\"\"Format and split Yoda Sentences for Phi-3 fine-tuning.\n\n    Structure mirrors Correction's component interface while preserving existing\n    transformation logic (column choices and variant handling with defaults).\n    \"\"\"\n    import logging\n    import json\n    import pandas as pd\n    from datasets import Dataset\n\n    # Defaults preserved from previous implementation\n    user_column = \"sentence\"\n    assistant_column = \"translation\"\n    assistant_fallback_column = \"translation_extra\"\n    prefer_extra = True\n    emit_both_variants = False\n    random_seed = 42\n\n    logging.basicConfig(level=logging.INFO)\n    logger = logging.getLogger(__name__)\n    logger.info(\"Starting data transformation process...\")\n\n    logger.info(f\"Reading from {raw_dataset_uri}\")\n    df = pd.read_csv(raw_dataset_uri)\n\n    # Validate columns\n    expected = {user_column}\n    if assistant_column:\n        expected.add(assistant_column)\n    if assistant_fallback_column:\n        expected.add(assistant_fallback_column)\n    missing = [c for c in expected if c not in df.columns]\n    if missing:\n        raise ValueError(f\"Missing expected columns: {missing}\")\n\n    # Build conversations using selected assistant column\n    conversations = []\n    for _, row in df.iterrows():\n        user_text = str(row[user_column])\n        primary_ok = assistant_column in df.columns and pd.notna(row[assistant_column])\n        extra_ok = assistant_fallback_column in df.columns and pd.notna(row[assistant_fallback_column])\n\n        if prefer_extra and extra_ok:\n            assistant_text = str(row[assistant_fallback_column])\n        elif primary_ok:\n            assistant_text = str(row[assistant_column])\n        elif extra_ok:\n            assistant_text = str(row[assistant_fallback_column])\n        else:\n            assistant_text = \"\"\n\n        conversations.append([\n            {\"role\": \"user\", \"content\": user_text},\n            {\"role\": \"assistant\", \"content\": assistant_text},\n        ])\n\n        if emit_both_variants and primary_ok and extra_ok:\n            other_text = str(row[assistant_column]) if prefer_extra else str(row[assistant_fallback_column])\n            conversations.append([\n                {\"role\": \"user\", \"content\": user_text},\n                {\"role\": \"assistant\", \"content\": other_text},\n            ])\n\n    ds = Dataset.from_dict({\"messages\": [json.dumps(conv) for conv in conversations]})\n    logger.info(\"Splitting dataset: test_size=%.2f seed=%d\", train_test_split_ratio, random_seed)\n    split = ds.train_test_split(test_size=train_test_split_ratio, seed=random_seed)\n\n    logger.info(f\"Writing train dataset to {train_dataset}...\")\n    split[\"train\"].to_csv(train_dataset, index=False)\n\n    logger.info(f\"Writing test dataset to {test_dataset}...\")\n    split[\"test\"].to_csv(test_dataset, index=False)\n\n    logger.info(\"Data transformation process completed successfully\")\n\n"
+          ],
+          "image": "python:3.11-slim"
+        }
+      },
+      "exec-fine-tuning-component": {
+        "container": {
+          "args": [
+            "--executor_input",
+            "{{$}}",
+            "--function_to_execute",
+            "fine_tuning_component"
+          ],
+          "command": [
+            "sh",
+            "-c",
+            "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip || python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1 python3 -m pip install --quiet --no-warn-script-location 'transformers==4.46.*' 'peft==0.13.2' 'accelerate>=0.33' 'tensorboard>=2.17' 'scipy>=1.11' 'torch>=2.9.0' 'torchvision>=0.24.0' 'torchaudio>=2.9.0' 'bitsandbytes>=0.44.0' 'trl>=0.9.0' 'datasets>=3.0.1' 'pandas>=2.2.2' 'google-cloud-storage>=2.19.0' 'python-dotenv>=1.0.1'  &&  python3 -m pip install --quiet --no-warn-script-location 'kfp==2.14.6' '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"$0\" \"$@\"\n",
+            "sh",
+            "-ec",
+            "program_path=$(mktemp -d)\n\nprintf \"%s\" \"$0\" > \"$program_path/ephemeral_component.py\"\n_KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         \"$program_path/ephemeral_component.py\"                         \"$@\"\n",
+            "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import *\n\ndef fine_tuning_component(\n    train_dataset: Input[Dataset],\n    model: Output[Model],\n    metrics: Output[Metrics],\n) -> None:\n    \"\"\"Fine-tune Phi-3 model with LoRA on Yoda sentences dataset.\n\n    Args:\n        train_dataset: Training dataset from data transformation step\n        model: Output path for the fine-tuned model\n        metrics: Output path for training metrics\n    \"\"\"\n    import os\n    import json\n    import logging\n    import torch\n    from datasets import Dataset\n    from transformers import (\n        AutoTokenizer, \n        AutoModelForCausalLM,\n        BitsAndBytesConfig\n    )\n    from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training\n    from trl import SFTTrainer, SFTConfig\n    from google.cloud import storage\n    import pandas as pd\n\n    # Setup logging\n    logging.basicConfig(level=logging.INFO)\n    logger = logging.getLogger(__name__)\n    logger.info(\"Starting fine-tuning process...\")\n\n    # Hyperparameters\n    hyperparameters = {\n        \"model_name\": \"microsoft/Phi-3-mini-4k-instruct\",\n        \"max_seq_length\": 512,\n        \"learning_rate\": 2e-4,\n        \"num_train_epochs\": 3,\n        \"batch_size\": 4,\n        \"gradient_accumulation_steps\": 4,\n        \"warmup_steps\": 100,\n        \"logging_steps\": 10,\n        \"save_steps\": 500,\n        \"eval_steps\": 100,\n        \"lora_r\": 16,\n        \"lora_alpha\": 32,\n        \"lora_dropout\": 0.1,\n        \"lora_target_modules\": [\"q_proj\", \"k_proj\", \"v_proj\", \"o_proj\", \"gate_proj\", \"up_proj\", \"down_proj\"]\n    }\n\n    logger.info(\"Hyperparameters:\")\n    for key, value in hyperparameters.items():\n        logger.info(f\"  {key}: {value}\")\n\n    # Load tokenizer\n    logger.info(\"Loading tokenizer...\")\n    tokenizer = AutoTokenizer.from_pretrained(hyperparameters[\"model_name\"])\n    if tokenizer.pad_token is None:\n        tokenizer.pad_token = tokenizer.eos_token\n\n    # BitsAndBytes configuration for quantization\n    bnb_config = BitsAndBytesConfig(\n        load_in_4bit=True,\n        bnb_4bit_use_double_quant=True,\n        bnb_4bit_quant_type=\"nf4\",\n        bnb_4bit_compute_dtype=torch.bfloat16\n    )\n\n    # Load model with quantization\n    logger.info(\"Loading model with quantization...\")\n    model_obj = AutoModelForCausalLM.from_pretrained(\n        hyperparameters[\"model_name\"],\n        quantization_config=bnb_config,\n        torch_dtype=torch.bfloat16,\n        device_map=\"auto\",\n    )\n\n    # Prepare model for k-bit training\n    logger.info(\"Preparing model for k-bit training...\")\n    model_obj = prepare_model_for_kbit_training(model_obj)\n\n    # LoRA configuration\n    lora_config = LoraConfig(\n        r=hyperparameters[\"lora_r\"],\n        lora_alpha=hyperparameters[\"lora_alpha\"],\n        target_modules=hyperparameters[\"lora_target_modules\"],\n        lora_dropout=hyperparameters[\"lora_dropout\"],\n        bias=\"none\",\n        task_type=\"CAUSAL_LM\",\n    )\n\n    # Apply LoRA to model\n    logger.info(\"Applying LoRA adapters...\")\n    model_obj = get_peft_model(model_obj, lora_config)\n\n    # Log model info\n    total_params = model_obj.num_parameters()\n    trainable_params = sum(p.numel() for p in model_obj.parameters() if p.requires_grad)\n    logger.info(f\"Total parameters: {total_params:,}\")\n    logger.info(f\"Trainable parameters: {trainable_params:,}\")\n    logger.info(f\"Trainable percentage: {100 * trainable_params / total_params:.2f}%\")\n\n    # Load training dataset\n    logger.info(\"Loading training dataset...\")\n    df = pd.read_csv(train_dataset.path)\n\n    # Convert to Hugging Face Dataset format\n    def create_training_dataset(df: pd.DataFrame) -> Dataset:\n        \"\"\"Convert DataFrame to Hugging Face Dataset.\"\"\"\n        data = []\n        for _, row in df.iterrows():\n            # Parse the messages JSON string\n            messages = json.loads(row[\"messages\"])\n            data.append({\"messages\": messages})\n        return Dataset.from_list(data)\n\n    dataset = create_training_dataset(df)\n    logger.info(f\"Training dataset loaded: {len(dataset)} examples\")\n\n    # Split dataset for validation\n    train_test_split = dataset.train_test_split(test_size=0.2, seed=42)\n    train_dataset_hf = train_test_split[\"train\"]\n    eval_dataset_hf = train_test_split[\"test\"]\n\n    logger.info(f\"Training examples: {len(train_dataset_hf)}\")\n    logger.info(f\"Validation examples: {len(eval_dataset_hf)}\")\n\n    # SFT Configuration\n    sft_config = SFTConfig(\n        output_dir=\"./results\",\n        num_train_epochs=hyperparameters[\"num_train_epochs\"],\n        per_device_train_batch_size=hyperparameters[\"batch_size\"],\n        gradient_accumulation_steps=hyperparameters[\"gradient_accumulation_steps\"],\n        learning_rate=hyperparameters[\"learning_rate\"],\n        logging_steps=hyperparameters[\"logging_steps\"],\n        save_steps=hyperparameters[\"save_steps\"],\n        eval_steps=hyperparameters[\"eval_steps\"],\n        warmup_steps=hyperparameters[\"warmup_steps\"],\n        max_seq_length=hyperparameters[\"max_seq_length\"],\n        report_to=[\"tensorboard\"],\n        logging_dir=metrics.path,  # Save TensorBoard logs to metrics path\n        save_total_limit=2,\n        load_best_model_at_end=True,\n        metric_for_best_model=\"eval_loss\",\n        greater_is_better=False,\n        evaluation_strategy=\"steps\",\n        save_strategy=\"steps\",\n    )\n\n    # Create trainer\n    logger.info(\"Creating SFTTrainer...\")\n    trainer = SFTTrainer(\n        model=model_obj,\n        args=sft_config,\n        train_dataset=train_dataset_hf,\n        eval_dataset=eval_dataset_hf,\n        tokenizer=tokenizer,\n        max_seq_length=hyperparameters[\"max_seq_length\"],\n        dataset_text_field=\"messages\",\n    )\n\n    # Start training\n    logger.info(\"Starting training...\")\n    training_result = trainer.train()\n\n    # Log training metrics\n    logger.info(\"Training completed!\")\n    logger.info(f\"Final training loss: {training_result.training_loss:.4f}\")\n\n    # Save the fine-tuned model\n    logger.info(f\"Saving model to {model.path}...\")\n    trainer.save_model(model.path)\n    tokenizer.save_pretrained(model.path)\n\n    # Save training metrics\n    metrics_dict = {\n        \"final_training_loss\": training_result.training_loss,\n        \"total_parameters\": total_params,\n        \"trainable_parameters\": trainable_params,\n        \"trainable_percentage\": 100 * trainable_params / total_params,\n        \"training_examples\": len(train_dataset_hf),\n        \"validation_examples\": len(eval_dataset_hf),\n        \"epochs\": hyperparameters[\"num_train_epochs\"],\n        \"learning_rate\": hyperparameters[\"learning_rate\"],\n        \"batch_size\": hyperparameters[\"batch_size\"],\n        \"lora_r\": hyperparameters[\"lora_r\"],\n        \"lora_alpha\": hyperparameters[\"lora_alpha\"],\n    }\n\n    # Write metrics to file\n    with open(metrics.path, \"w\") as f:\n        json.dump(metrics_dict, f, indent=2)\n\n    logger.info(\"Fine-tuning process completed successfully!\")\n    logger.info(f\"Model saved to: {model.path}\")\n    logger.info(f\"Metrics saved to: {metrics.path}\")\n\n"
+          ],
+          "image": "pytorch/pytorch:2.8.0-cuda12.9-cudnn9-devel",
+          "resources": {
+            "accelerator": {
+              "count": "1",
+              "resourceCount": "1",
+              "resourceType": "NVIDIA_TESLA_T4",
+              "type": "NVIDIA_TESLA_T4"
+            },
+            "cpuLimit": 16.0,
+            "memoryLimit": 50.0,
+            "resourceCpuLimit": "16",
+            "resourceMemoryLimit": "50G"
+          }
+        }
+      }
+    }
+  },
+  "pipelineInfo": {
+    "name": "yoda-model-training-pipeline"
+  },
+  "root": {
+    "dag": {
+      "tasks": {
+        "data-transformation-component": {
+          "cachingOptions": {
+            "enableCache": true
+          },
+          "componentRef": {
+            "name": "comp-data-transformation-component"
+          },
+          "inputs": {
+            "parameters": {
+              "raw_dataset_uri": {
+                "componentInputParameter": "raw_dataset_uri"
+              },
+              "train_test_split_ratio": {
+                "runtimeValue": {
+                  "constant": 0.2
+                }
+              }
+            }
+          },
+          "taskInfo": {
+            "name": "data-transformation-component"
+          }
+        },
+        "fine-tuning-component": {
+          "cachingOptions": {
+            "enableCache": true
+          },
+          "componentRef": {
+            "name": "comp-fine-tuning-component"
+          },
+          "dependentTasks": [
+            "data-transformation-component"
+          ],
+          "inputs": {
+            "artifacts": {
+              "train_dataset": {
+                "taskOutputArtifact": {
+                  "outputArtifactKey": "train_dataset",
+                  "producerTask": "data-transformation-component"
+                }
+              }
+            }
+          },
+          "taskInfo": {
+            "name": "fine-tuning-component"
+          }
+        }
+      }
+    },
+    "inputDefinitions": {
+      "parameters": {
+        "raw_dataset_uri": {
+          "parameterType": "STRING"
+        }
+      }
+    }
+  },
+  "schemaVersion": "2.1.0",
+  "sdkVersion": "kfp-2.14.6"
+}

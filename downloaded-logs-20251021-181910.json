@@ -1,0 +1,2165 @@
+[
+  {
+    "textPayload": "Waiting for job to be provisioned.",
+    "insertId": "12kn0pxdf1e1",
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "task_name": "service",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:02:53.710184467Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/job_state": "QUEUED",
+      "ml.googleapis.com/endpoint": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/ml.googleapis.com%2F3182574477187743744",
+    "receiveTimestamp": "2025-10-21T16:02:54.469705985Z"
+  },
+  {
+    "textPayload": "Vertex AI is provisioning job running framework. First time usage might take couple of minutes, and subsequent runs can be much faster.",
+    "insertId": "12kn0pxdf1e2",
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "task_name": "service",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:02:53.721665665Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/endpoint": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/ml.googleapis.com%2F3182574477187743744",
+    "receiveTimestamp": "2025-10-21T16:02:54.469705985Z"
+  },
+  {
+    "textPayload": "Vertex AI is setting up this job.",
+    "insertId": "12kn0pxdf1e3",
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "task_name": "service",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:02:53.734026299Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/endpoint": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/ml.googleapis.com%2F3182574477187743744",
+    "receiveTimestamp": "2025-10-21T16:02:54.469705985Z"
+  },
+  {
+    "textPayload": "Waiting for training program to start.",
+    "insertId": "12kn0pxdf1e4",
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "service",
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:02:53.852991506Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/endpoint": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/ml.googleapis.com%2F3182574477187743744",
+    "receiveTimestamp": "2025-10-21T16:02:54.469705985Z"
+  },
+  {
+    "textPayload": "Job is preparing.",
+    "insertId": "12kn0pxdf1e6",
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "service",
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:02:54.976035024Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/endpoint": "",
+      "ml.googleapis.com/job_state": "PREPARING"
+    },
+    "logName": "projects/llm-ops-475209/logs/ml.googleapis.com%2F3182574477187743744",
+    "receiveTimestamp": "2025-10-21T16:02:56.465956844Z"
+  },
+  {
+    "textPayload": "Job is running.",
+    "insertId": "12kn0pxdf1eu",
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209",
+        "task_name": "service"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:07.339368704Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/job_state": "RUNNING",
+      "ml.googleapis.com/endpoint": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/ml.googleapis.com%2F3182574477187743744",
+    "receiveTimestamp": "2025-10-21T16:03:08.482265856Z"
+  },
+  {
+    "textPayload": "The replica workerpool0-0 exited with a non-zero status of 1. Termination reason: Error. To find out more about why your job exited please check the logs: https://console.cloud.google.com/logs/viewer?project=54825872111&resource=ml_job%2Fjob_id%2F3182574477187743744&advancedFilter=resource.type%3D%22ml_job%22%0Aresource.labels.job_id%3D%223182574477187743744%22",
+    "insertId": "12kn0pxdf1gg",
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "service",
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:35.975652378Z",
+    "severity": "ERROR",
+    "labels": {
+      "ml.googleapis.com/endpoint": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/ml.googleapis.com%2F3182574477187743744",
+    "receiveTimestamp": "2025-10-21T16:03:37.515679042Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlps",
+    "jsonPayload": {
+      "levelname": "ERROR",
+      "message": "WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning."
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016487446Z",
+    "severity": "ERROR",
+    "labels": {
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlpt",
+    "jsonPayload": {
+      "levelname": "ERROR",
+      "message": "WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning."
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016502385Z",
+    "severity": "ERROR",
+    "labels": {
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlpu",
+    "jsonPayload": {
+      "message": "[KFP Executor 2025-10-21 16:03:29,406 INFO]: Looking for component `inference_component` in --component_module_path `/tmp/tmp.by5kAIZfjS/ephemeral_component.py`",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016519567Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/resource_id": "4853079534462440994"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlpv",
+    "jsonPayload": {
+      "message": "[KFP Executor 2025-10-21 16:03:29,406 INFO]: Loading KFP component \"inference_component\" from /tmp/tmp.by5kAIZfjS/ephemeral_component.py (directory \"/tmp/tmp.by5kAIZfjS\" and module name \"ephemeral_component\")",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016527369Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_type": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlpw",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "[KFP Executor 2025-10-21 16:03:29,408 INFO]: Got executor_input:"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016534343Z",
+    "severity": "INFO",
+    "labels": {
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlpx",
+    "jsonPayload": {
+      "message": "{",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016552344Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlpy",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "    \"inputs\": {"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016563717Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlpz",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "        \"artifacts\": {"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016570586Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/zone": "europe-west2-b"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlq0",
+    "jsonPayload": {
+      "message": "            \"model\": {",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016577522Z",
+    "severity": "INFO",
+    "labels": {
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/tpu_worker_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlq1",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "                \"artifacts\": ["
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016584116Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlq2",
+    "jsonPayload": {
+      "message": "                    {",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016609317Z",
+    "severity": "INFO",
+    "labels": {
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlq3",
+    "jsonPayload": {
+      "message": "                        \"metadata\": {},",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016620652Z",
+    "severity": "INFO",
+    "labels": {
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlq4",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "                        \"name\": \"projects/54825872111/locations/europe-west2/metadataStores/default/artifacts/9014160508950305654\","
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016628385Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/tpu_worker_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlq5",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "                        \"type\": {"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016635231Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/job_id/log_area": "root"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlq6",
+    "jsonPayload": {
+      "message": "                            \"schemaTitle\": \"system.Model\"",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016644805Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/trial_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlq7",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "                        },"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016651397Z",
+    "severity": "INFO",
+    "labels": {
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlq8",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "                        \"uri\": \"gs://llmops_samuel_duflot/vertex-pipelines/54825872111/samuel-duflot-model-training-pipeline-20251021173626-20251021173628/fine-tuning-component_8823363934233821184/model\""
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016664321Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/tpu_worker_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlq9",
+    "jsonPayload": {
+      "message": "                    }",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016671029Z",
+    "severity": "INFO",
+    "labels": {
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/zone": "europe-west2-b"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqa",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "                ]"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016680595Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/zone": "europe-west2-b"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqb",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "            },"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016687187Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqc",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "            \"test_dataset\": {"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016696371Z",
+    "severity": "INFO",
+    "labels": {
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/tpu_worker_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqd",
+    "jsonPayload": {
+      "message": "                \"artifacts\": [",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016703585Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/job_id/log_area": "root"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqe",
+    "jsonPayload": {
+      "message": "                    {",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016709755Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_id": "4853079534462440994"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqf",
+    "jsonPayload": {
+      "message": "                        \"metadata\": {},",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016719615Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/resource_id": "4853079534462440994"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqg",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "                        \"name\": \"projects/54825872111/locations/europe-west2/metadataStores/default/artifacts/3897374066743094157\","
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016727281Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "compute.googleapis.com/resource_id": "4853079534462440994"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqh",
+    "jsonPayload": {
+      "message": "                        \"type\": {",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016736912Z",
+    "severity": "INFO",
+    "labels": {
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqi",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "                            \"schemaTitle\": \"system.Dataset\""
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016744505Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/tpu_worker_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqj",
+    "jsonPayload": {
+      "message": "                        },",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016753903Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/zone": "europe-west2-b"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqk",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "                        \"uri\": \"gs://llmops_samuel_duflot/vertex-pipelines/54825872111/samuel-duflot-model-training-pipeline-20251021173626-20251021173628/data-transformation-component_4211677915806433280/test_dataset\""
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016761377Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlql",
+    "jsonPayload": {
+      "message": "                    }",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016767828Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/tpu_worker_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqm",
+    "jsonPayload": {
+      "message": "                ]",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016776688Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqn",
+    "jsonPayload": {
+      "message": "            }",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016783120Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqo",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "        }"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016792399Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqp",
+    "jsonPayload": {
+      "message": "    },",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016799361Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/tpu_worker_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqq",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "    \"outputs\": {"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016809056Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "compute.googleapis.com/zone": "europe-west2-b"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqr",
+    "jsonPayload": {
+      "message": "        \"artifacts\": {",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016816239Z",
+    "severity": "INFO",
+    "labels": {
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/job_id/log_area": "root"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqs",
+    "jsonPayload": {
+      "message": "            \"predictions\": {",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016827842Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/trial_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqt",
+    "jsonPayload": {
+      "message": "                \"artifacts\": [",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016834524Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/job_id/log_area": "root"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqu",
+    "jsonPayload": {
+      "message": "                    {",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016841760Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/tpu_worker_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqv",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "                        \"metadata\": {},"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016851443Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/zone": "europe-west2-b"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqw",
+    "jsonPayload": {
+      "message": "                        \"name\": \"projects/54825872111/locations/europe-west2/metadataStores/default/artifacts/5498082368442857228\",",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016858487Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_type": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqx",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "                        \"type\": {"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016867921Z",
+    "severity": "INFO",
+    "labels": {
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqy",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "                            \"schemaTitle\": \"system.Dataset\""
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016875811Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlqz",
+    "jsonPayload": {
+      "message": "                        },",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016885625Z",
+    "severity": "INFO",
+    "labels": {
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/tpu_worker_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlr0",
+    "jsonPayload": {
+      "message": "                        \"uri\": \"gs://llmops_samuel_duflot/vertex-pipelines/54825872111/samuel-duflot-model-training-pipeline-20251021173626-20251021173628/inference-component_-400008102620954624/predictions\"",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016892654Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlr1",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "                    }"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016899218Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlr2",
+    "jsonPayload": {
+      "message": "                ]",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016908563Z",
+    "severity": "INFO",
+    "labels": {
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/trial_type": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlr3",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "            }"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016915109Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_id": "4853079534462440994"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlr4",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "        },"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016924753Z",
+    "severity": "INFO",
+    "labels": {
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlr5",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "        \"outputFile\": \"/gcs/llmops_samuel_duflot/vertex-pipelines/54825872111/samuel-duflot-model-training-pipeline-20251021173626-20251021173628/inference-component_-400008102620954624/executor_output.json\""
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.016995425Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlr6",
+    "jsonPayload": {
+      "message": "    }",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017002478Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/job_id/log_area": "root"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlr7",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "}"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017011950Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/tpu_worker_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlr8",
+    "jsonPayload": {
+      "message": "Traceback (most recent call last):",
+      "levelname": "ERROR"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017018670Z",
+    "severity": "ERROR",
+    "labels": {
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/trial_type": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlr9",
+    "jsonPayload": {
+      "levelname": "ERROR",
+      "message": "  File \"<frozen runpy>\", line 198, in _run_module_as_main"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017026195Z",
+    "severity": "ERROR",
+    "labels": {
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/job_id/log_area": "root"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlra",
+    "jsonPayload": {
+      "message": "  File \"<frozen runpy>\", line 88, in _run_code",
+      "levelname": "ERROR"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017035589Z",
+    "severity": "ERROR",
+    "labels": {
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/job_id/log_area": "root"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlrb",
+    "jsonPayload": {
+      "message": "  File \"/opt/conda/lib/python3.11/site-packages/kfp/dsl/executor_main.py\", line 109, in <module>",
+      "levelname": "ERROR"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017042804Z",
+    "severity": "ERROR",
+    "labels": {
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/job_id/log_area": "root"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlrc",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "[KFP Executor 2025-10-21 16:03:33,104 INFO]: Model path received: /gcs/llmops_samuel_duflot/vertex-pipelines/54825872111/samuel-duflot-model-training-pipeline-20251021173626-20251021173628/fine-tuning-component_8823363934233821184/model"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017053805Z",
+    "severity": "INFO",
+    "labels": {
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/tpu_worker_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlrd",
+    "jsonPayload": {
+      "message": "[KFP Executor 2025-10-21 16:03:33,104 INFO]: Model path type: <class 'str'>",
+      "levelname": "INFO"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017065441Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlre",
+    "jsonPayload": {
+      "levelname": "INFO",
+      "message": "[KFP Executor 2025-10-21 16:03:33,104 INFO]: Downloading model from /gcs/llmops_samuel_duflot/vertex-pipelines/54825872111/samuel-duflot-model-training-pipeline-20251021173626-20251021173628/fine-tuning-component_8823363934233821184/model to model..."
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017075296Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlrf",
+    "jsonPayload": {
+      "message": "    executor_main()",
+      "levelname": "ERROR"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017082295Z",
+    "severity": "ERROR",
+    "labels": {
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/resource_id": "4853079534462440994"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlrg",
+    "jsonPayload": {
+      "levelname": "ERROR",
+      "message": "  File \"/opt/conda/lib/python3.11/site-packages/kfp/dsl/executor_main.py\", line 101, in executor_main"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017088918Z",
+    "severity": "ERROR",
+    "labels": {
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlrh",
+    "jsonPayload": {
+      "levelname": "ERROR",
+      "message": "    output_file = executor.execute()"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017098193Z",
+    "severity": "ERROR",
+    "labels": {
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlri",
+    "jsonPayload": {
+      "levelname": "ERROR",
+      "message": "                  ^^^^^^^^^^^^^^^^^^"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017105024Z",
+    "severity": "ERROR",
+    "labels": {
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlrj",
+    "jsonPayload": {
+      "message": "  File \"/opt/conda/lib/python3.11/site-packages/kfp/dsl/executor.py\", line 377, in execute",
+      "levelname": "ERROR"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017114922Z",
+    "severity": "ERROR",
+    "labels": {
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_id": "4853079534462440994"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlrk",
+    "jsonPayload": {
+      "message": "    result = self.func(**func_kwargs)",
+      "levelname": "ERROR"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "task_name": "workerpool0-0",
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017121495Z",
+    "severity": "ERROR",
+    "labels": {
+      "ml.googleapis.com/job_id/log_area": "root",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlrl",
+    "jsonPayload": {
+      "message": "             ^^^^^^^^^^^^^^^^^^^^^^^^",
+      "levelname": "ERROR"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017130751Z",
+    "severity": "ERROR",
+    "labels": {
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/job_id/log_area": "root"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlrm",
+    "jsonPayload": {
+      "message": "  File \"/tmp/tmp.by5kAIZfjS/ephemeral_component.py\", line 98, in inference_component",
+      "levelname": "ERROR"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017137639Z",
+    "severity": "ERROR",
+    "labels": {
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/tpu_worker_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlrn",
+    "jsonPayload": {
+      "message": "    download_model(model.path, str(local_dir))",
+      "levelname": "ERROR"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "job_id": "3182574477187743744",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017146927Z",
+    "severity": "ERROR",
+    "labels": {
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/trial_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/tpu_worker_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlro",
+    "jsonPayload": {
+      "message": "  File \"/tmp/tmp.by5kAIZfjS/ephemeral_component.py\", line 31, in download_model",
+      "levelname": "ERROR"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017153598Z",
+    "severity": "ERROR",
+    "labels": {
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/zone": "europe-west2-b"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlrp",
+    "jsonPayload": {
+      "levelname": "ERROR",
+      "message": "    raise ValueError(f\"Invalid model URI: {model_uri}\")"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0",
+        "job_id": "3182574477187743744"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017159995Z",
+    "severity": "ERROR",
+    "labels": {
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/tpu_worker_id": "",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "ml.googleapis.com/trial_type": "",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/job_id/log_area": "root"
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "insertId": "b3x88ffrxhlrq",
+    "jsonPayload": {
+      "message": "ValueError: Invalid model URI: /gcs/llmops_samuel_duflot/vertex-pipelines/54825872111/samuel-duflot-model-training-pipeline-20251021173626-20251021173628/fine-tuning-component_8823363934233821184/model",
+      "levelname": "ERROR"
+    },
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "project_id": "llm-ops-475209",
+        "task_name": "workerpool0-0"
+      }
+    },
+    "timestamp": "2025-10-21T16:03:38.017169381Z",
+    "severity": "ERROR",
+    "labels": {
+      "ml.googleapis.com/job_id/log_area": "root",
+      "compute.googleapis.com/resource_id": "4853079534462440994",
+      "ml.googleapis.com/trial_id": "",
+      "ml.googleapis.com/trial_type": "",
+      "compute.googleapis.com/zone": "europe-west2-b",
+      "compute.googleapis.com/resource_name": "gk3-cml-1021-080213-d3af-nap-9gshyht8-2aca2fdb-x566",
+      "ml.googleapis.com/tpu_worker_id": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/workerpool0-0",
+    "receiveTimestamp": "2025-10-21T16:03:41.384772404Z"
+  },
+  {
+    "textPayload": "Finished tearing down training program.",
+    "insertId": "12kn0pxdf1q0",
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "task_name": "service",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:06:53.740612835Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/endpoint": ""
+    },
+    "logName": "projects/llm-ops-475209/logs/ml.googleapis.com%2F3182574477187743744",
+    "receiveTimestamp": "2025-10-21T16:06:54.724448190Z"
+  },
+  {
+    "textPayload": "Job failed.",
+    "insertId": "12kn0pxdf1q1",
+    "resource": {
+      "type": "ml_job",
+      "labels": {
+        "job_id": "3182574477187743744",
+        "task_name": "service",
+        "project_id": "llm-ops-475209"
+      }
+    },
+    "timestamp": "2025-10-21T16:06:53.963494391Z",
+    "severity": "INFO",
+    "labels": {
+      "ml.googleapis.com/endpoint": "",
+      "ml.googleapis.com/job_state": "FAILED"
+    },
+    "logName": "projects/llm-ops-475209/logs/ml.googleapis.com%2F3182574477187743744",
+    "receiveTimestamp": "2025-10-21T16:06:55.726716415Z"
+  }
+]

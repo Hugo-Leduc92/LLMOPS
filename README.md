@@ -1,27 +1,64 @@
-# LLMOPS
+# LLMOps Course Materials
+> Course materials for the LLMOps class for Albert School!
 
-## Environment variables
+## Project requirements
 
-Create a `.env` file (not committed) alongside this README with:
+### Astral/uv
 
+- Install [uv](https://github.com/astral-sh/uv) to manage your Python version, virtual environments, dependencies and
+tooling configs: see [installation docs](https://github.com/astral-sh/uv?tab=readme-ov-file#installation).
+
+
+## Installation
+
+### Python virtual environment and dependencies
+
+Run the following command:
+```bash
+uv sync
 ```
-GCP_PROJECT_ID=your-project-id
-GCP_REGION=your-region
-GCP_BUCKET_NAME=your-bucket-name
+
+## GCP Setup
+
+### Prerequisites
+
+1. Install [Google Cloud SDK](https://cloud.google.com/sdk/docs/install) if not already installed
+2. Create or identify a GCP project for the LLMOps class
+
+### Authentication and Project Configuration
+
+1. Authenticate with your Google account:
+   ```bash
+   gcloud auth login
+   gcloud auth application-default login
+   ```
+
+2. Set your project ID:
+   ```bash
+   gcloud config set project YOUR_PROJECT_ID
+   ```
+
+### Enable Required APIs
+
+Enable the necessary GCP services:
+
+```bash
+gcloud services enable aiplatform.googleapis.com
+gcloud services enable storage-component.googleapis.com
+gcloud services enable cloudresourcemanager.googleapis.com
 ```
 
-You can copy from `.env.example`.
+### Environment Variables
 
-## Session 2 pipeline
+Create a `.env` file in the project root that matches the .env.example file.
+Upload the dataset to the matching GCS bucket and filename!
 
-Code lives under `src/` and `scripts/` once scaffolded.
 
-### Run locally
+# Feedbacks
 
-1. Install deps using uv or pip.
-2. Ensure `.env` contains GCP settings.
-3. Compile and submit pipeline:
-
-```
-python scripts/pipeline_runner.py gs://YOUR_BUCKET/path/to/yoda_sentences.csv
-```
+- Send GCP setup and installation pre-requisites before the first class
+- Change "recommended Python version" to "required Python version"
+- Downloading the model is a pain, ask people to do it before hand if possible
+- Missing Metadata store
+- Remove sessions from code solution
+- Remove hardcoded mathieu_soul
