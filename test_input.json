@@ -1,0 +1,12 @@
+{
+  "instances": [
+    {
+      "input": "<|user|>\nPaint the handle of your lightsaber on your hip dull gray.<|end|>\n<|assistant|>"
+    }
+  ],
+  "parameters": {
+    "max_new_tokens": 64,
+    "temperature": 0.1,
+    "top_p": 0.8
+  }
+}

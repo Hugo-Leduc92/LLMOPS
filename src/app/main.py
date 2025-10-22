@@ -6,12 +6,15 @@ import subprocess
 import chainlit as cl
 import requests
 from chainlit.message import Message
+from langfuse import Langfuse, observe
 from transformers import AutoTokenizer
 
 from src.constants import ENDPOINT_ID, PROJECT_NUMBER
 
 MODEL_REPO_ID = "microsoft/Phi-3-mini-4k-instruct"
 ENDPOINT_URL = f"https://europe-west2-aiplatform.googleapis.com/v1/projects/{PROJECT_NUMBER}/locations/europe-west2/endpoints/{ENDPOINT_ID}:predict"
+
+langfuse = Langfuse(blocked_instrumentation_scopes=["chainlit"])
 
 
 @cl.set_starters  # type: ignore
@@ -58,6 +61,7 @@ def extract_response(generated_text: str) -> str:
     )[0]
 
 
+@observe(name="User Message")
 def call_model_api(message: Message) -> str:
     """Call the custom LLM chat model API."""
     tokenizer = AutoTokenizer.from_pretrained(MODEL_REPO_ID)
@@ -66,25 +70,43 @@ def call_model_api(message: Message) -> str:
         ["gcloud", "auth", "print-access-token"], text=True
     ).strip()
 
-    templated_input = build_prompt(tokenizer, message.content)
-    model_input = {
-        "instances": [{"input": templated_input}],
-        "parameters": {
-            "maxOutputTokens": 64,
-            "temperature": 0.1,
-            "topP": 0.8,
-        },
-    }
-    response = requests.post(
-        ENDPOINT_URL,
-        headers={
-            "Authorization": f"Bearer {access_token}",
-            "Content-Type": "application/json",
-        },
-        json=model_input,
-    ).json()
-    raw_model_response = response["predictions"][0]
+    langfuse.update_current_span(input=message.content)
+
+    with langfuse.start_as_current_generation(name="Yoda LLM Generation") as gen:
+        templated_input = build_prompt(tokenizer, message.content)
+        model_input = {
+            "instances": [{"input": templated_input}],
+            "parameters": {
+                "max_new_tokens": 64,
+                "temperature": 0.1,
+                "top_p": 0.8,
+            },
+        }
+        response = requests.post(
+            ENDPOINT_URL,
+            headers={
+                "Authorization": f"Bearer {access_token}",
+                "Content-Type": "application/json",
+            },
+            json=model_input,
+        ).json()
+        raw_model_response = response["predictions"][0]
+
+        gen.update(
+            input=templated_input,
+            output=raw_model_response,
+            model=response.get("modelDisplayName", "Yoda Model"),
+            version=response.get("modelVersionId", "1"),
+            metadata={
+                **{
+                    "deployedModelId": response.get("deployedModelId", "unknown"),
+                    "model": response.get("model", "unknown"),
+                },
+                **model_input["parameters"],
+            },
+        )
 
     extracted_response = extract_response(raw_model_response)
+    langfuse.update_current_span(output={"answer": extracted_response})
 
     return extracted_response

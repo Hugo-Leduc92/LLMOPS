@@ -4,4 +4,11 @@
     "python.terminal.activateEnvironment": true,
     "python.experiments.enabled": true,
     "python.experiments.optInto": ["pythonTerminalEnvVarActivation"],
+        "files.exclude": {
+          "**/_pycache": true,
+          "*/.pytest_cache": true,
+          "/.mypy_cache": true,
+          "**/.ruff_cache": true,
+          "*/.chainlit": true
+        }
 }
